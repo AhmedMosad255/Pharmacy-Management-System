@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 - Java Development Kit (JDK)
-- Integrated Development Environment (IDE) like Eclipse or IntelliJ IDEA
+- Integrated Development Environment (IDE) like NetBeans or Eclipse or IntelliJ IDEA
 
 ### Installing
 1. Clone the repository to your local machine.
