@@ -40,7 +40,7 @@ public class SellMedicine extends javax.swing.JFrame {
         username = tempUsername;
         setLocationRelativeTo(null);
     }
-    private void medicineName(String nameOrUniqueId){
+    public void medicineName(String nameOrUniqueId){
         DefaultTableModel model = (DefaultTableModel) medicineTable.getModel();
         model.setRowCount(0);
         try {
