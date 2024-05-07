@@ -137,7 +137,7 @@ public class AddMedicine extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String UniqueId = txtUniqueId.getText();
+         String UniqueId = txtUniqueId.getText();
         String name = txtName.getText();
         String companyName = txtCompanyName.getText();
         String quantity = txtQuantity.getText();
@@ -158,21 +158,31 @@ public class AddMedicine extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Price Unit Field is Invalid.");
         }else{
             try {
-                Connection conn = ConnectionProvider.getConnection();
-                PreparedStatement ps = conn.prepareStatement("INSERT INTO medicine (uniqueId, name, companyName, quantity, price) VALUES (?, ?, ?, ?, ?)");
-                ps.setString(1, UniqueId);
-                ps.setString(2, name);
-                ps.setString(3, companyName);
-                ps.setString(4, quantity);
-                ps.setString(5, price);
-                ps.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Medicine Added Successfully.");
-                setVisible(false);
-                new AddMedicine().setVisible(true);
+                // Call the method to handle database insertion
+                handleDatabaseInsertion(UniqueId, name, companyName, quantity, price);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
         }
+}
+
+    // Method to handle database insertion
+    public void handleDatabaseInsertion(String uniqueId, String name, String companyName, String quantity, String price) {
+    try {
+        Connection conn = ConnectionProvider.getConnection();
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO medicine (uniqueId, name, companyName, quantity, price) VALUES (?, ?, ?, ?, ?)");
+        ps.setString(1, uniqueId);
+        ps.setString(2, name);
+        ps.setString(3, companyName);
+        ps.setString(4, quantity);
+        ps.setString(5, price);
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Medicine Added Successfully.");
+        setVisible(false);
+        new AddMedicine().setVisible(true);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
